@@ -19,7 +19,7 @@ module.exports = {
   ecmaVersion: 'latest',
   sourceType: 'module',
  },
- plugins: ['react', '@typescript-eslint', 'simple-import-sort'],
+ plugins: ['react', 'react-hooks', '@typescript-eslint', 'simple-import-sort'],
  rules: {
   'import/no-extraneous-dependencies': 'off',
   'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
@@ -38,6 +38,8 @@ module.exports = {
   'no-shadow': 'off',
   'simple-import-sort/imports': 'error',
   'simple-import-sort/exports': 'error',
+  'react-hooks/rules-of-hooks': 'error',
+  'react-hooks/exhaustive-deps': 'warn',
  },
  settings: {
   react: {

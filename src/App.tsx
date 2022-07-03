@@ -1,6 +1,7 @@
 import '@assets/css/styles.css'
 
 import Button from '@components/Button'
+import Component from '@components/Component'
 import { useState } from 'react'
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
      </a>
     </p>
    </header>
+   <Component />
   </div>
  )
 }
