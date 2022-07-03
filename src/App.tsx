@@ -1,4 +1,4 @@
-import './App.css'
+import '@assets/css/styles.css'
 
 import Button from '@components/Button'
 import { useState } from 'react'
@@ -7,7 +7,7 @@ function App() {
  const [count, setCount] = useState(0)
 
  return (
-  <div className="App">
+  <div className="App bg-red-600">
    <header className="App-header">
     <img src="/logo.svg" className="App-logo" alt="logo" />
     <p>Vite Example!!</p>
