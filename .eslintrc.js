@@ -36,7 +36,25 @@ module.exports = {
    },
   ],
   'no-shadow': 'off',
-  'simple-import-sort/imports': 'error',
+  'simple-import-sort/imports': [
+   'error',
+   {
+    groups: [
+     // Packages `react` related packages come first.
+     ['^react', '^@?\\w'],
+     // Internal packages.
+     //  ['^(@|components)(/.*|$)'],
+     // Side effect imports.
+     ['^\\u0000'],
+     // Parent imports. Put `..` last.
+     ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+     // Other relative imports. Put same-folder imports and `.` last.
+     ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+     // Style imports.
+     ['^.+\\.?(css)$'],
+    ],
+   },
+  ],
   'simple-import-sort/exports': 'error',
   'react-hooks/rules-of-hooks': 'error',
   'react-hooks/exhaustive-deps': 'warn',
