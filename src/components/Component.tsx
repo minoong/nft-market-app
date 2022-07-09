@@ -1,5 +1,5 @@
-import useCountdown from '@hooks/useCountdown'
 import { ChangeEvent, useState } from 'react'
+import useCountdown from '@hooks/useCountdown'
 
 export default function Component() {
  const [intervalValue, setIntervalValue] = useState<number>(1000)
@@ -12,7 +12,7 @@ export default function Component() {
   setIntervalValue(Number(event.target.value))
  }
  return (
-  <div>
+  <div className="pt-12">
    <p>Count: {count}</p>
 
    <input type="number" value={intervalValue} onChange={handleChangeIntervalValue} />
