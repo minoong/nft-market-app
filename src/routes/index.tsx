@@ -1,7 +1,7 @@
 import { useRoutes } from 'react-router-dom'
 import Button from '@components/Button'
-import Component from '@components/Component'
 import Layout from '@components/organisms/Layout'
+import MarketMain from '@pages/market/Main'
 
 export default function ThemeRoutes() {
  return useRoutes([
@@ -10,11 +10,11 @@ export default function ThemeRoutes() {
    element: <Layout />,
    children: [
     {
-     path: '/test',
-     element: <Component />,
+     path: '/market',
+     element: <MarketMain />,
     },
     {
-     path: '/button',
+     path: '/test',
      element: <Button />,
     },
    ],

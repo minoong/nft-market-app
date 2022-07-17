@@ -22,7 +22,10 @@
    "@hooks/*": ["src/hooks/*"],
    "@routes/*": ["src/routes/*"],
    "@constants/*": ["src/constants/*"],
-   "@assets/*": ["src/assets/*"]
+   "@assets/*": ["src/assets/*"],
+   "@libs/*": ["src/libs/*"],
+   "@teyps/*": ["src/teyps/*"],
+   "@features/*": ["src/features/*"]
   }
  },
  "include": ["src"],

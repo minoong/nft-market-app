@@ -4,13 +4,7 @@ module.exports = {
   es2021: true,
   jest: true,
  },
- extends: [
-  'plugin:react/recommended',
-  'airbnb',
-  'plugin:react/jsx-runtime',
-  'plugin:prettier/recommended',
-  'plugin:cypress/recommended',
- ],
+ extends: ['plugin:react/recommended', 'airbnb', 'plugin:react/jsx-runtime', 'plugin:prettier/recommended', 'plugin:cypress/recommended'],
  parser: '@typescript-eslint/parser',
  parserOptions: {
   ecmaFeatures: {
@@ -21,6 +15,7 @@ module.exports = {
  },
  plugins: ['react', 'react-hooks', '@typescript-eslint', 'simple-import-sort'],
  rules: {
+  '@typescript-eslint/no-unused-vars': ['error'],
   'import/no-extraneous-dependencies': 'off',
   'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
   'import/extensions': [
@@ -58,6 +53,7 @@ module.exports = {
   'simple-import-sort/exports': 'error',
   'react-hooks/rules-of-hooks': 'error',
   'react-hooks/exhaustive-deps': 'warn',
+  'import/prefer-default-export': 'off',
  },
  settings: {
   react: {
