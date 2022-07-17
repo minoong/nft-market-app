@@ -25,7 +25,8 @@
    "@assets/*": ["src/assets/*"],
    "@libs/*": ["src/libs/*"],
    "@teyps/*": ["src/teyps/*"],
-   "@features/*": ["src/features/*"]
+   "@features/*": ["src/features/*"],
+   "@modules/*": ["src/modules/*"]
   }
  },
  "include": ["src"],
