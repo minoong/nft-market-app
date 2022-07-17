@@ -16,6 +16,7 @@ module.exports = {
   '^@pages/(.*)': '<rootDir>/src/pages/$1',
   '^@hooks/(.*)': '<rootDir>/src/hooks/$1',
   '^@assets/(.*)': '<rootDir>/src/assets/$1',
+  '^@libs/(.*)': '<rootDir>/src/libs/$1',
   '^react-native$': 'react-native-web',
   // Used to dedupe `styled-component` when run `npm link` in development
   '^styled-components$': '<rootDir>/node_modules/styled-components',
