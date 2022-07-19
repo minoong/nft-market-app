@@ -25,6 +25,7 @@
    "@assets/*": ["src/assets/*"],
    "@libs/*": ["src/libs/*"],
    "@teyps/*": ["src/teyps/*"],
+   "@utils/*": ["src/utils/*"],
    "@features/*": ["src/features/*"],
    "@modules/*": ["src/modules/*"]
   }
