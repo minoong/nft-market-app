@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useQuery } from 'react-query'
-import Grid from '@components/organisms/MarketInfoGrid/Grid'
+import MarketInfoGrid from '@components/organisms/MarketInfoGrid'
 import { upbitMarket } from '@features/upblit/market'
 import { apiCall } from '@libs/api'
 import SearchIcon from '@mui/icons-material/Search'
@@ -42,7 +42,7 @@ export default function MarketMain() {
      ),
     }}
    />
-   {market.length && <Grid fetchFunc={upbitMarket} />}
+   {market.length && <MarketInfoGrid fetchFunc={upbitMarket} />}
   </Box>
  )
 }
