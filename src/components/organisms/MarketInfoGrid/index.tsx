@@ -3,10 +3,11 @@ import { marketFetcher } from '@features/upblit/market'
 import { Avatar, Box, CircularProgress, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import { numberToHuman } from '@utils/index'
 import { useAtomValue } from 'jotai'
+import { useUpdateAtom } from 'jotai/utils'
 import * as _ from 'lodash'
 import { useObservable, useObservableState } from 'observable-hooks'
 import { catchError, distinctUntilChanged, forkJoin, map, of, repeat, startWith, switchMap, timer } from 'rxjs'
-import { krwMarketAtom, Market, marketAtom, searchAtom } from 'src/jotai/market/marketAtom'
+import { krwMarketAtom, Market, marketAtom, searchAtom, selectSymbolAtom } from 'src/jotai/market/marketAtom'
 import { CandleByTickerProps } from 'src/types/upbit/market'
 
 export type finishMarkets = Market & CandleByTickerProps
@@ -37,7 +38,7 @@ interface Column {
 }
 
 const columns: readonly Column[] = [
- { id: 'market', label: '한글명', minWidth: 120 },
+ { id: 'market', label: '한글명', minWidth: 100 },
  { id: 'trade_price', label: '현재가', minWidth: 100, align: 'right' },
  {
   id: 'signed_change_rate',
@@ -54,10 +55,11 @@ const columns: readonly Column[] = [
 ]
 
 function StateGrid({ data }: { data: finishMarkets[] }) {
+ const setSymbol = useUpdateAtom(selectSymbolAtom)
  return (
-  <Box sx={{ flexGrow: 1, overflow: 'hidden', width: '400px', fontSize: '0.765rem' }}>
+  <Box sx={{ flexGrow: 1, overflow: 'hidden', width: '100%', fontSize: '0.765rem' }}>
    <TableContainer sx={{ maxHeight: `calc(100vh - 120px)` }}>
-    <Table size="small" stickyHeader aria-label="sticky table">
+    <Table size="small" stickyHeader aria-label="sticky table" sx={{ width: `calc(100% - 20px)` }}>
      <TableHead>
       <TableRow>
        {columns.map((column) => (
@@ -69,15 +71,15 @@ function StateGrid({ data }: { data: finishMarkets[] }) {
      </TableHead>
      <TableBody>
       {data.map((coin) => (
-       <TableRow hover role="checkbox" tabIndex={-1} key={coin.market} sx={{ verticalAlign: 'top' }}>
+       <TableRow hover role="checkbox" tabIndex={-1} key={coin.market} sx={{ verticalAlign: 'top' }} onClick={() => setSymbol(coin.market)}>
         {columns.map((column) => {
          let jsxEl = null
          if (column.id === 'market') {
           jsxEl = (
-           <Stack direction="row" spacing={2}>
+           <Stack direction="row" spacing={1}>
             <Avatar alt={coin.market.split('-')[1][0]} src={`/markets/${coin.market.split('-')[1]}.png`} sx={{ width: 24, height: 24 }} />
             <Stack>
-             <Typography sx={{ fontSize: '0.765rem' }}>{coin.korean_name}</Typography>
+             <Typography sx={{ fontSize: '0.565rem' }}>{coin.korean_name}</Typography>
              <Typography sx={{ fontSize: '0.125rem' }}>{coin.market.split('-')[1]}</Typography>
             </Stack>
            </Stack>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link as RouterLink, Outlet } from 'react-router-dom'
 import { MENU_INFO_LIST } from '@constants/menu'
+import useElementSize from '@hooks/useElementSize'
 import { AccountCircle } from '@mui/icons-material'
 import AirlineStopsIcon from '@mui/icons-material/AirlineStops'
 import { AppBar, Container, Link, Menu, MenuItem } from '@mui/material'
@@ -21,6 +22,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function PersistentDrawerLeft() {
  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+ const ref = useRef<HTMLDivElement>(null)
+ const [width, height] = useElementSize(ref)
+
+ console.log(width, height)
 
  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
   setAnchorEl(event.currentTarget)
@@ -31,7 +36,7 @@ export default function PersistentDrawerLeft() {
  }
 
  return (
-  <Box sx={{ display: 'flex', height: '100vh' }}>
+  <Box sx={{ display: 'flex', height: '100vh' }} ref={ref}>
    <CssBaseline />
    <AppBar position="fixed">
     <Toolbar>
