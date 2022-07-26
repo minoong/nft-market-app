@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useQuery } from 'react-query'
 import MarketInfoGrid from '@components/organisms/MarketInfoGrid'
+import StockChart from '@components/organisms/StockChart'
 import { upbitMarket } from '@features/upblit/market'
 import { apiCall } from '@libs/api'
 import SearchIcon from '@mui/icons-material/Search'
-import { Box, InputAdornment, TextField } from '@mui/material'
+import { Box, Grid, InputAdornment, TextField } from '@mui/material'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { useObservable, useSubscription } from 'observable-hooks'
 import { map, switchMap, timer } from 'rxjs'
@@ -27,22 +28,30 @@ export default function MarketMain() {
  useSubscription(search$, setSearch)
 
  return (
-  <Box>
-   <TextField
-    id="market-search"
-    label="코인명/심볼검색"
-    type="search"
-    variant="standard"
-    onChange={(e) => setInput(e.target.value)}
-    InputProps={{
-     endAdornment: (
-      <InputAdornment position="end">
-       <SearchIcon />
-      </InputAdornment>
-     ),
-    }}
-   />
-   {market.length && <MarketInfoGrid fetchFunc={upbitMarket} />}
+  <Box sx={{ display: 'flex', width: '100%' }}>
+   <Grid container sx={{ width: '100%', overflow: 'scroll' }}>
+    <Grid item sx={{ width: '100%' }}>
+     <StockChart />
+    </Grid>
+   </Grid>
+   <Box sx={{ width: '400px', padding: '0px' }}>
+    <TextField
+     fullWidth
+     id="market-search"
+     label="코인명/심볼검색"
+     type="search"
+     variant="standard"
+     onChange={(e) => setInput(e.target.value)}
+     InputProps={{
+      endAdornment: (
+       <InputAdornment position="end">
+        <SearchIcon />
+       </InputAdornment>
+      ),
+     }}
+    />
+    {market.length && <MarketInfoGrid fetchFunc={upbitMarket} />}
+   </Box>
   </Box>
  )
 }
