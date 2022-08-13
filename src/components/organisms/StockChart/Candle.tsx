@@ -12,7 +12,7 @@ interface IProps {
  refEl: React.RefObject<SVGSVGElement>
 }
 
-const Candle: React.FC<IProps> = function ({ data, x, candleWidth, pixelFor, refEl }) {
+function Candle({ data, x, candleWidth, pixelFor, refEl }: IProps) {
  const up = data.trade_price > data.opening_price
  const barTop = pixelFor(up ? data.trade_price : data.opening_price)
  const barBottom = pixelFor(up ? data.opening_price : data.trade_price)
@@ -29,15 +29,13 @@ const Candle: React.FC<IProps> = function ({ data, x, candleWidth, pixelFor, ref
    .append('rect')
    .attr('width', candleWidth)
    .attr('height', () => barHeight)
-   //    .attr('fill', 'orange')
    .attr('x', x - candleWidth / 2)
    .attr('y', barTop)
-   //    .style('stroke', '1')
    .attr('class', () => {
     return classNames.default({
      'stroke-1': true,
-     'fill-current text-green-500': up,
-     'fill-current text-red-500': !up,
+     'fill-current text-red-500': up,
+     'fill-current text-blue-500': !up,
     })
    })
 
@@ -53,8 +51,8 @@ const Candle: React.FC<IProps> = function ({ data, x, candleWidth, pixelFor, ref
    .attr('class', () => {
     return classNames.default({
      'stroke-1': true,
-     'stroke-current text-green-500': up && !isSame,
-     'stroke-current text-red-500': !up && !isSame,
+     'stroke-current text-red-500': up && !isSame,
+     'stroke-current text-blue-500': !up && !isSame,
      'stroke-current text-gray-600': isSame,
     })
    })
@@ -71,8 +69,8 @@ const Candle: React.FC<IProps> = function ({ data, x, candleWidth, pixelFor, ref
    .attr('class', () => {
     return classNames.default({
      'stroke-1': true,
-     'stroke-current text-green-500': up && !isSame,
-     'stroke-current text-red-500': !up && !isSame,
+     'stroke-current text-red-500': up && !isSame,
+     'stroke-current text-blue-500': !up && !isSame,
      'stroke-current text-gray-600': isSame,
     })
    })

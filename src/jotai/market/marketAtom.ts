@@ -9,4 +9,3 @@ export interface Market {
 export const marketAtom = atom<Market[]>([])
 export const krwMarketAtom = atom((get) => get(marketAtom).filter((market) => market.market.startsWith('KRW-')))
 export const searchAtom = atom<string>('')
-export const selectSymbolAtom = atom<string>('KRW-BTC')

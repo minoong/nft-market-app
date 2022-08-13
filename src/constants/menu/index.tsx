@@ -10,6 +10,6 @@ type MenuInfoProps = {
 
 // eslint-disable-next-line import/prefer-default-export
 export const MENU_INFO_LIST: MenuInfoProps[] = [
- { path: '/market', menuName: '원화마켓', icon: <ShowChartIcon /> },
+ { path: '/market/KRW-BTC', menuName: '원화마켓', icon: <ShowChartIcon /> },
  { path: '/test', menuName: '투자내역', icon: <AssessmentIcon /> },
 ]

@@ -1,13 +1,13 @@
 /* eslint-disable camelcase */
+import { useNavigate, useParams } from 'react-router-dom'
 import { marketFetcher } from '@features/upblit/market'
 import { Avatar, Box, CircularProgress, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import { numberToHuman } from '@utils/index'
 import { useAtomValue } from 'jotai'
-import { useUpdateAtom } from 'jotai/utils'
 import * as _ from 'lodash'
 import { useObservable, useObservableState } from 'observable-hooks'
 import { catchError, distinctUntilChanged, forkJoin, map, of, repeat, startWith, switchMap, timer } from 'rxjs'
-import { krwMarketAtom, Market, marketAtom, searchAtom, selectSymbolAtom } from 'src/jotai/market/marketAtom'
+import { krwMarketAtom, Market, marketAtom, searchAtom } from 'src/jotai/market/marketAtom'
 import { CandleByTickerProps } from 'src/types/upbit/market'
 
 export type finishMarkets = Market & CandleByTickerProps
@@ -55,7 +55,13 @@ const columns: readonly Column[] = [
 ]
 
 function StateGrid({ data }: { data: finishMarkets[] }) {
- const setSymbol = useUpdateAtom(selectSymbolAtom)
+ const navigate = useNavigate()
+ const { symbol = 'KRW-BTC' } = useParams<{ symbol: string }>()
+ const handleSymbolRow = (param: string) => {
+  if (symbol === param) return
+  navigate(`/market/${param}`)
+ }
+
  return (
   <Box sx={{ flexGrow: 1, overflow: 'hidden', width: '100%', fontSize: '0.765rem' }}>
    <TableContainer sx={{ maxHeight: `calc(100vh - 120px)` }}>
@@ -71,7 +77,7 @@ function StateGrid({ data }: { data: finishMarkets[] }) {
      </TableHead>
      <TableBody>
       {data.map((coin) => (
-       <TableRow hover role="checkbox" tabIndex={-1} key={coin.market} sx={{ verticalAlign: 'top' }} onClick={() => setSymbol(coin.market)}>
+       <TableRow hover role="checkbox" tabIndex={-1} key={coin.market} sx={{ verticalAlign: 'top' }} onClick={() => handleSymbolRow(coin.market)}>
         {columns.map((column) => {
          let jsxEl = null
          if (column.id === 'market') {
