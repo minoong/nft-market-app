@@ -9,7 +9,9 @@
   "jest-preview": "jest-preview",
   "test": "NODE_ENV=test jest --watchAll",
   "lint": "eslint --ext .tsx --ext .ts src/",
-  "prettier": "prettier --write src/**/*.{ts,tsx}"
+  "prettier": "prettier --write src/**/*.{ts,tsx}",
+  "storybook": "start-storybook -p 6006",
+  "build-storybook": "build-storybook"
  },
  "lint-staged": {
   "src/**/*.{ts,tsx}": [
@@ -45,6 +47,14 @@
   "rxjs": "^7.5.5"
  },
  "devDependencies": {
+  "@babel/core": "^7.18.10",
+  "@storybook/addon-actions": "^6.5.10",
+  "@storybook/addon-essentials": "^6.5.10",
+  "@storybook/addon-interactions": "^6.5.10",
+  "@storybook/addon-links": "^6.5.10",
+  "@storybook/builder-vite": "^0.2.2",
+  "@storybook/react": "^6.5.10",
+  "@storybook/testing-library": "^0.0.13",
   "@swc/core": "^1.2.208",
   "@swc/jest": "^0.2.21",
   "@testing-library/cypress": "^8.0.3",
@@ -60,6 +70,7 @@
   "@typescript-eslint/parser": "^5.30.3",
   "@vitejs/plugin-react": "^1.3.0",
   "autoprefixer": "^10.4.7",
+  "babel-loader": "^8.2.5",
   "cypress": "^10.3.0",
   "eslint": "^8.19.0",
   "eslint-config-airbnb": "^19.0.4",
@@ -72,6 +83,7 @@
   "eslint-plugin-react": "^7.30.1",
   "eslint-plugin-react-hooks": "^4.6.0",
   "eslint-plugin-simple-import-sort": "^7.0.0",
+  "eslint-plugin-storybook": "^0.6.4",
   "husky": "^8.0.1",
   "jest": "^28.1.2",
   "jest-environment-jsdom": "^28.1.2",
@@ -84,7 +96,7 @@
   "tailwindcss": "^3.1.4",
   "ts-jest": "^28.0.5",
   "typescript": "^4.6.3",
-  "vite": "^2.9.9",
+  "vite": "^3.0.7",
   "vite-tsconfig-paths": "^3.5.0"
  }
 }
