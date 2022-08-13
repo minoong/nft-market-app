@@ -10,7 +10,7 @@ export default function ThemeRoutes() {
    element: <Layout />,
    children: [
     {
-     path: '/market',
+     path: '/market/:symbol',
      element: <MarketMain />,
     },
     {
