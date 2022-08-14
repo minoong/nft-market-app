@@ -28,30 +28,30 @@ export default function MarketMain() {
  useSubscription(search$, setSearch)
 
  return (
-  <Box sx={{ display: 'flex', width: '100%' }}>
-   <Grid container sx={{ width: '100%', overflow: 'scroll' }}>
-    <Grid item sx={{ width: '100%' }}>
-     <StockChart />
-    </Grid>
+  <Grid container spacing={2}>
+   <Grid item xs={8}>
+    <StockChart />
    </Grid>
-   <Box sx={{ width: '400px', padding: '0px' }}>
-    <TextField
-     fullWidth
-     id="market-search"
-     label="코인명/심볼검색"
-     type="search"
-     variant="standard"
-     onChange={(e) => setInput(e.target.value)}
-     InputProps={{
-      endAdornment: (
-       <InputAdornment position="end">
-        <SearchIcon />
-       </InputAdornment>
-      ),
-     }}
-    />
-    {market.length && <MarketInfoGrid fetchFunc={upbitMarket} />}
-   </Box>
-  </Box>
+   <Grid item xs={4}>
+    <Box>
+     <TextField
+      fullWidth
+      id="market-search"
+      label="코인명/심볼검색"
+      type="search"
+      variant="standard"
+      onChange={(e) => setInput(e.target.value)}
+      InputProps={{
+       endAdornment: (
+        <InputAdornment position="end">
+         <SearchIcon />
+        </InputAdornment>
+       ),
+      }}
+     />
+     {market.length && <MarketInfoGrid fetchFunc={upbitMarket} />}
+    </Box>
+   </Grid>
+  </Grid>
  )
 }

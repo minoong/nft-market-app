@@ -149,7 +149,7 @@ function DataList() {
  }
 
  return (
-  <Box ref={divRef} sx={{ height: '100vh' }}>
+  <Box ref={divRef}>
    <svg ref={ref} width={width} height={385} onMouseMove={onMouseMoveInside} onMouseLeave={onMouseLeave}>
     {candle.map((bar) => {
      const candleX = xScale(new Date(bar.candle_date_time_kst))

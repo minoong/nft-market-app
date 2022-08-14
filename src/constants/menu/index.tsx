@@ -8,7 +8,6 @@ type MenuInfoProps = {
  icon?: React.ReactNode
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const MENU_INFO_LIST: MenuInfoProps[] = [
  { path: '/market/KRW-BTC', menuName: '원화마켓', icon: <ShowChartIcon /> },
  { path: '/test', menuName: '투자내역', icon: <AssessmentIcon /> },

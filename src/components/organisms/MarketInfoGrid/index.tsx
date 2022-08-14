@@ -64,7 +64,7 @@ function StateGrid({ data }: { data: finishMarkets[] }) {
 
  return (
   <Box sx={{ flexGrow: 1, overflow: 'hidden', width: '100%', fontSize: '0.765rem' }}>
-   <TableContainer sx={{ maxHeight: `calc(100vh - 120px)` }}>
+   <TableContainer sx={{ maxHeight: `calc(100vh - 140px)` }}>
     <Table size="small" stickyHeader aria-label="sticky table" sx={{ width: `calc(100% - 20px)` }}>
      <TableHead>
       <TableRow>
