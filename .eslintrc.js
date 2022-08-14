@@ -4,7 +4,19 @@ module.exports = {
   es2021: true,
   jest: true,
  },
- extends: ['plugin:react/recommended', 'airbnb', 'plugin:react/jsx-runtime', 'plugin:prettier/recommended', 'plugin:cypress/recommended'],
+ extends: [
+  'airbnb',
+  'airbnb-typescript',
+  'airbnb/hooks',
+  'plugin:@typescript-eslint/recommended',
+  'plugin:@typescript-eslint/recommended-requiring-type-checking',
+  'plugin:react/recommended',
+  'plugin:react/jsx-runtime',
+  'plugin:prettier/recommended',
+  'prettier/@typescript-eslint',
+  'plugin:cypress/recommended',
+  'plugin:storybook/recommended',
+ ],
  parser: '@typescript-eslint/parser',
  parserOptions: {
   ecmaFeatures: {
@@ -17,7 +29,12 @@ module.exports = {
  rules: {
   '@typescript-eslint/no-unused-vars': ['error'],
   'import/no-extraneous-dependencies': 'off',
-  'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+  'react/jsx-filename-extension': [
+   'error',
+   {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+   },
+  ],
   'import/extensions': [
    'error',
    'ignorePackages',
@@ -36,16 +53,12 @@ module.exports = {
    {
     groups: [
      // Packages `react` related packages come first.
-     ['^react', '^@?\\w'],
-     // Internal packages.
+     ['^react', '^@?\\w'], // Internal packages.
      //  ['^(@|components)(/.*|$)'],
      // Side effect imports.
-     ['^\\u0000'],
-     // Parent imports. Put `..` last.
-     ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
-     // Other relative imports. Put same-folder imports and `.` last.
-     ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-     // Style imports.
+     ['^\\u0000'], // Parent imports. Put `..` last.
+     ['^\\.\\.(?!/?$)', '^\\.\\./?$'], // Other relative imports. Put same-folder imports and `.` last.
+     ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'], // Style imports.
      ['^.+\\.?(css)$'],
     ],
    },
@@ -55,6 +68,8 @@ module.exports = {
   'react-hooks/exhaustive-deps': 'warn',
   'import/prefer-default-export': 'off',
   'class-methods-use-this': 'off',
+  'react/function-component-definition': 'off',
+  'react/jsx-props-no-spreading': 'off',
  },
  settings: {
   react: {
